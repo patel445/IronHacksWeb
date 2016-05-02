@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html class="full2" lang="en">
+<% include header.html %>
+
+<style>
+    @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+            display: block;
+        }
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        tr {
+            border: 1px solid #ccc;
+        }
+        td {
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+        td:before {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+        td:nth-of-type(1):before {
+            content: "Criteria";
+        }
+        td:nth-of-type(2):before {
+            content: "Grade";
+        }
+        td:nth-of-type(3):before {
+            content: "Comments";
+        }
+    }
+    
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+        body {
+            padding: 0;
+            margin: 0;
+            width: 320px;
+        }
+    }
+    
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        body {
+            width: 495px;
+        }
+    }
+</style>
+
+<body class="judge">
+       <script type="text/javascript">
+        function GenerateTable() {
+            var people = new Array();
+            people.push(["Criteria", "How well is the data implemented", "How relevant is the data", "Comments"]);
+            people.push([1, "Insert", "Insert"]);
+            people.push([2, "Insert", "Insert"]);
+            people.push([3, "Insert", "Insert"]);
+            people.push([4, "Insert", "Insert"]);
+            var table = document.createElement("TABLE");
+            table.border = "1";
+            var columnCount = people[0].length;
+            var row = table.insertRow(-1);
+            for (var i = 0; i < columnCount; i++) {
+                var headerCell = document.createElement("TH");
+                headerCell.innerHTML = people[0][i];
+                row.appendChild(headerCell);
+
+            }
+            for (var i = 1; i < people.length; i++) {
+                row = table.insertRow(-1);
+
+                for (var j = 0; j < columnCount; j++) {
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = people[i][j];
+
+                }
+            }
+            var dvTable = document.getElementById("dvTable");
+            dvTable.innerHTML = "";
+            dvTable.appendChild(table);
+        }
+    </script>
+       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">            
+                                <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </nav>
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <h1 class="page-header">Profile</h1>
+            <div class="row row-centered">
+
+
+                <div class="col-md-8 col-sm-6 col-xs-12 col-centered personal-info">
+                    <h3 class="centered">Personal Information</h3>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">First Name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" value="Jay" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Last Name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" value="Patel" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Github:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" value="https://github.com/patel445" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Email:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" value="patel445@purdue.edu" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Username:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" value="patel445" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Score1:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" value="120" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Score2:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" value="130" type="text" readonly>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="user" class="user-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>User Requirements</h1>
+                    <p class="sizer"><strong>Description:</strong> The primary measure for this performance dimension relates to the fullfillment of user requirements specified in the hacking task e.g. was the app developed for citizens living in Lafayette (check the task requirement again)</p>
+
+                    <div id="page-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="40%">Criteria</th>
+                                    <th width="10%">Yes=1/No=0</th>
+                                    <th width="50%">Comments</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr height="125px">
+                                    <td>The application/mash-up is developed for the users in West Lafayette/Lafeyette</td>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad">Yes/1</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad">No/0</label>
+                                        </div>
+                                        <div class="radio">
+
+                                            <td>
+                                                <textarea>
+                                                </textarea>
+                                            </td>
+
+                                </tr>
+                                <tr height="125px">
+                                    <td>The application/mash-up allows users to choose where to live in West Lafayette and Lafayette</td>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad2">Yes/1</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad2">No/0</label>
+                                        </div>
+                                        <div class="radio">
+                                    </td>
+                                    <td>
+                                        <textarea>
+                                        </textarea>
+                                    </td>
+
+                                </tr>
+                                <tr height="125px">
+                                    <td>The application/mash-up provides at least 2 options for living in West Lafayette and Lafayette</td>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad3">Yes/1</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad3">No/0</label>
+                                        </div>
+                                        <div class="radio">
+                                    </td>
+                                    <td>
+                                        <textarea>
+                                        </textarea>
+                                    </td>
+
+                                </tr>
+                                <tr height="125px">
+                                    <td>The application/mash-up provides living options with estimated cost info to the users</td>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad4">Yes/1</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad4">No/0</label>
+                                        </div>
+                                        <div class="radio">
+                                    </td>
+                                    <td>
+                                        <textarea>
+                                        </textarea>
+                                    </td>
+
+                                </tr>
+                                <tr height="125px">
+                                    <td>The application/mash-up provides the info that helps the users decide where to live  (e.g. parks and recreation, location of services, schools, public transportation, street lighting, closeness to highway, crime rates etc.)</td>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad5">Yes/1</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad5">No/0</label>
+                                        </div>
+                                        <div class="radio">
+                                    </td>
+                                    <td>
+                                        <textarea>
+                                        </textarea>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+    </section>
+
+
+    <section id="visual" class="visual-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Information Visualization</h1>
+                    <p class="sizer"><strong>Description:</strong> In the dimension of Information Visualization we focus on three core aspects: System affordance: Does the application offer recognizable elements and interactions that can be understood by the user? Cognitive workload: Is the number of alternatives from which the user can choose appropriate? Would a potential user have to memorize a lot of information to carry the task?</p>
+                    <div id="page-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="40%">Criteria</th>
+                                    <th width="10%">Heuristic evaluation 0-3</th>
+                                    <th width="50%">Comments</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr height="150px">
+                                    <td>The page layout design in the application/mash-up is efficient and consistant</td>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad6">0</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad6">1</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad6">2</label>
+                                        </div>
+                                        <div class="radio">
+                                    </td>
+                                    <td>
+                                        <textarea>
+                                        </textarea>
+                                    </td>
+
+                                </tr>
+                                <tr height="150px">
+                                    <td>Minimal nessary actions of finding an option</td>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad7">0</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad7">1</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad7">2</label>
+                                        </div>
+                                        <div class="radio">
+                                    </td>
+                                    <td>
+                                        <textarea>
+                                        </textarea>
+                                    </td>
+
+                                </tr>
+                                <tr height="150px">
+                                    <td>The user interface offers recognizable elements and interactions that can be understood by the user</td>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad8">0</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad8">1</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad8">2</label>
+                                        </div>
+                                        <div class="radio">
+                                    </td>
+                                    <td>
+                                        <textarea>
+                                        </textarea>
+                                    </td>
+
+                                </tr>
+                                <tr height="150px">
+                                    <td>The user does not have to memorize a lot of information to find the alternative option</td>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad9">0</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad9">1</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad9">2</label>
+                                        </div>
+                                        <div class="radio">
+                                    </td>
+                                    <td>
+                                        <textarea>
+                                        </textarea>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+    </section>
+
+    <section id="nov" class="nov-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Novelty</h1>
+                    <p class="sizer"><strong>Description:</strong> Novely is evaluated with respect to two dimensions: Did you the application include features that go beyond standard features of Google maps? Does the application include more than just the mandatory dataset?</p>
+                    <div id="page-wrap">
+                        <table>
+                            <hr />
+                            <div id="dvTable">
+                            </div>
+                            <script>
+                                GenerateTable();
+                            </script>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

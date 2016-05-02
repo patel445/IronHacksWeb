@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="full2" lang="en">
+<% include header.html %>
+    <body class="judge">
+      <script type="text/javascript">
+        function GenerateTable() {
+            var people = new Array();
+            var temp2 = new Array();
+            temp2 = <%- JSON.stringify(users) %>;
+            people.push(["Github Name"]);
+            for(var i = 0; i < temp2.length; i++ ){
+            people.push([temp2[i].name]);
+            }
+            var table = document.createElement("TABLE");
+            table.border = "1";
+            var columnCount = people[0].length;
+            var row = table.insertRow(-1);
+            for (var i = 0; i < columnCount; i++) {
+                var headerCell = document.createElement("TH");
+                headerCell.innerHTML = people[0][i];
+                row.appendChild(headerCell);
+
+            }
+            for (var i = 1; i < people.length; i++) {
+                row = table.insertRow(-1);
+
+                for (var j = 0; j < columnCount; j++) {
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = people[i][j];
+
+                }
+            }
+            var dvTable = document.getElementById("dvTable");
+            dvTable.innerHTML = "";
+            dvTable.appendChild(table);
+        }
+    </script>
+     <section id="nov" class="nov-section">
+       <%=users[0].password %>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Users</h1>
+                    
+                    <div id="page-wrap">
+                        <table>
+                            <hr />
+                            <div id="dvTable">
+                            </div>
+                            <script>
+                                GenerateTable();
+                            </script>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onClick="parent.location = '/test1'">Register</button>
+    </section>
+    </body>
+</html>

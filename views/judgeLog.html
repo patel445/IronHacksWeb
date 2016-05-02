@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html class="full2" lang="en">
+<% include header.html %>
+<style>
+    @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+            display: block;
+        }
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        tr {
+            border: 1px solid #ccc;
+        }
+        td {
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+        td:before {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+        td:nth-of-type(1):before {
+            content: "Criteria";
+        }
+        td:nth-of-type(2):before {
+            content: "Grade";
+        }
+        td:nth-of-type(3):before {
+            content: "Comments";
+        }
+    }
+    
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+        body {
+            padding: 0;
+            margin: 0;
+            width: 320px;
+        }
+    }
+    
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        body {
+            width: 495px;
+        }
+    }
+</style>
+<body class="judge">
+   
+   
+       <section id="nov" class="nov-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Pick Users</h1>
+                    <div id="page-wrap">
+                        <table>
+                            <hr />
+                            <div id="dvTable">
+                            </div>
+                            <script>
+                                GenerateTable();
+                            </script>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </body>
+    </html>

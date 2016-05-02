@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="full2" lang="en">
+<% include header.html %>
+<style>
+    @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+            display: block;
+        }
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        tr {
+            border: 1px solid #ccc;
+        }
+        td {
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+        td:before {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+        td:nth-of-type(1):before {
+            content: "Criteria";
+        }
+        td:nth-of-type(2):before {
+            content: "Grade";
+        }
+        td:nth-of-type(3):before {
+            content: "Comments";
+        }
+    }
+    
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+        body {
+            padding: 0;
+            margin: 0;
+            width: 320px;
+        }
+    }
+    
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        body {
+            width: 495px;
+        }
+    }
+</style>
+
+<body class="judge">
+    <script type="text/javascript">
+        function GenerateTable() {
+            var people = new Array();
+            people.push(["Input the dataset-related features:", "Input Text"]);
+            people.push(["Insert Here", "Insert Here"]);
+            people.push(["Dynamic Table", "Dynamic Table"]);
+            var table = document.createElement("TABLE");
+            table.border = "1";
+            var columnCount = people[0].length;
+            var row = table.insertRow(-1);
+            for (var i = 0; i < columnCount; i++) {
+                var headerCell = document.createElement("TH");
+                headerCell.innerHTML = people[0][i];
+                row.appendChild(headerCell);
+            }
+            for (var i = 1; i < people.length; i++) {
+                row = table.insertRow(-1);
+
+                for (var j = 0; j < columnCount; j++) {
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = people[i][j];
+
+                }
+            }
+            var dvTable = document.getElementById("dvTable");
+            dvTable.innerHTML = "";
+            dvTable.appendChild(table);
+        }
+    </script>
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">            
+                                <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <h1 class="page-header">Profile</h1>
+            <div class="row row-centered">
+
+
+                <div class="col-md-8 col-sm-6 col-xs-12 col-centered personal-info">
+                    <h3 class="centered">Personal Information</h3>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">First Name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" value="Jay" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Last Name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" value="Patel" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Github:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" value="https://github.com/patel445" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Email:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" value="patel445@purdue.edu" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Username:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" value="patel445" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Score1:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" value="120" type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Score2:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" value="130" type="text" readonly>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="nov" class="new-section">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Technical Judgeing</h1>
+                    <p class="sizer"><strong>Description:</strong> Formal technical evaluation</p>
+                    <div id="page-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="80%">Questions</th>
+                                    <th width="20%">Input</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr height="125px">
+                                    <td>Input whether meets the mandatory requirements: </td>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad">Yes/1</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="rad">No/0</label>
+                                        </div>
+                                        <div class="radio">
+
+
+                                </tr>
+                                <tr height="125px">
+                                    <td>Input the number of different name/type/priority of bugs: </td>
+                                    <td>
+                                        <form>
+                                            Quantity (between 1 and 100):
+                                            <input type="number" name="quantity" min="0" max="100">
+                                        </form>
+                                    </td>
+                                   
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        </div>
+                        <div id="page-wrap2">
+                            <table>
+                                <hr />
+                                <div id="dvTable">
+                                </div>
+                                <script>
+                                    GenerateTable();
+                                </script>
+                            </table>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+    </section>
+
+</body>
+
+</html>
